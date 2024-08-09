@@ -76,7 +76,6 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         imageList.add(R.drawable.exhibition)
         imageList.add(R.drawable.ball)
         imageList.add(R.drawable.balloon)
-        imageList.add(R.drawable.gambling)
     }
 
     fun menuAdapter(context: Context, array:Int, menuSpinner:Spinner){

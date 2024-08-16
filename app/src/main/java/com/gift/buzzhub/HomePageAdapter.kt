@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
+
 class HomePageAdapter(var nameList:ArrayList<String>,
                       var detailsList:ArrayList<String>,
                       var imageList:ArrayList<Int>,
@@ -80,6 +81,7 @@ class HomePageAdapter(var nameList:ArrayList<String>,
             else -> { Toast.makeText(context,"You have selected ${nameList[position]}",
                 Toast.LENGTH_LONG).show()}
         }
+
     }
 
 

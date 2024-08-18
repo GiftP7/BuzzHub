@@ -11,25 +11,17 @@
         android:id="@+id/gambling"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginBottom="259dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/buzzhub" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gamblingRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="257dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/card_design" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/gambling"
+        tools:listitem="@layout/gambling_card_design" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/category_cardView"
@@ -26,6 +26,7 @@
                 android:id="@+id/category_image"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
+                android:contentDescription="Festivals Image Header"
                 android:layout_marginStart="16dp"
                 android:backgroundTint="@color/black"
                 android:src="@drawable/lady"

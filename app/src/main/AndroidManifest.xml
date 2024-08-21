@@ -17,7 +17,9 @@
         <activity android:name=".SportingEventsActivity"/>
         <activity android:name=".Comedy"/>
         <activity android:name=".FestivalsActivity"/>
-        <activity android:name=".addHostActivity" />
+        <activity android:name=".addHostActivity"
+            android:parentActivityName=".SignUpPage"
+            />
         <activity android:name=".HomePage" />
         <activity
             android:name=".LoginPage"

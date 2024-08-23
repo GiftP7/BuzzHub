@@ -1,5 +1,7 @@
 package com.gift.buzzhub
 
+import android.graphics.Color
+import android.os.Build
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -25,11 +27,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        //status bar change colour to buzzhub Blue (Sam)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.statusBarColor= Color.parseColor("#009988")
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainActivity)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
         }
         signUpButtonHP = findViewById(R.id.signUpButtonHP)
         loginButtonHP = findViewById(R.id.loginButtonHP)

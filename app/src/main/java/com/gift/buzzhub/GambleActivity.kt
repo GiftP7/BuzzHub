@@ -1,5 +1,7 @@
 package com.gift.buzzhub
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,10 @@ class GambleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_gambling)
+        //status bar change colour to buzzhub Blue (Sam)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.statusBarColor= Color.parseColor("#009988")
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.gambling_main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

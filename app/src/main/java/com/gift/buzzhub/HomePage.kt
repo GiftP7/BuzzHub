@@ -2,6 +2,8 @@ package com.gift.buzzhub
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -35,6 +37,10 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         homePageBinding = ActivityHomePageBinding.inflate(layoutInflater)
         val view = homePageBinding.root
         setContentView(view)
+        //status bar change colour to buzzhub Green (Sam)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.statusBarColor= Color.parseColor("#98FB98")
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainHome)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

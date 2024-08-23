@@ -1,5 +1,7 @@
 package com.gift.buzzhub
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -28,6 +30,10 @@ class addHostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add)
+        //status bar change colour to buzzhub Green (Sam)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.statusBarColor= Color.parseColor("#98FB98")
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainHost)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

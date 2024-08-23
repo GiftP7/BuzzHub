@@ -1,6 +1,8 @@
 package com.gift.buzzhub
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +27,11 @@ class Exhibitions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_exhibitions)
+        //status bar change colour to buzzhub Blue (Sam)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.statusBarColor= Color.parseColor("#009988")
+        }
+
 
         recyclerView = findViewById(R.id.exhibitionsRecyclerView)
 

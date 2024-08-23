@@ -153,12 +153,12 @@
         android:fontFamily="@font/poppins_bold"
         android:text="Sign Up"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSportingEventName"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEventDetails"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
     <TextView
-        android:id="@+id/textViewSportingEventName"
+        android:id="@+id/textViewEventDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"

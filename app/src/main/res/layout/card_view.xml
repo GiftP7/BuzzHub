@@ -21,7 +21,7 @@
             android:layout_height="75dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/sportingEventProfileImage"
+                android:id="@+id/eventImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="5dp"
@@ -34,7 +34,7 @@
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
-                android:id="@+id/textViewSportingEventName"
+                android:id="@+id/textViewEventDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -42,7 +42,7 @@
                 android:textColor="#0D0C0C"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sportingEventProfileImage"
+                app:layout_constraintStart_toEndOf="@+id/eventImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

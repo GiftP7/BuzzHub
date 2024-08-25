@@ -1,6 +1,8 @@
 package com.gift.buzzhub
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,20 +11,20 @@ import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
 
 class GambleAdapter(
-    var gambleSites: ArrayList<String>,
-    var imagesGamble: ArrayList<Int>,
-    var context: Context,
-):RecyclerView.Adapter<GambleAdapter.GambleViewHolder>() {
+    private val gambleSites: ArrayList<String>,
+    private val imagesGamble: ArrayList<Int>,
+    private val siteNames: ArrayList<String>,
+    private val context: Context
+) : RecyclerView.Adapter<GambleAdapter.GambleViewHolder>() {
 
-    class GambleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
-        var SitesName : TextView = itemView.findViewById(R.id.gambleSite)
-        var imageView : CircleImageView = itemView.findViewById(R.id.hollywoodImg)
-
+    class GambleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var siteName: TextView = itemView.findViewById(R.id.gambleSite)
+        var imageView: CircleImageView = itemView.findViewById(R.id.hollywoodImg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GambleViewHolder {
-        val view : View = LayoutInflater.from(parent.context).inflate(R.layout.gambling_card_design, parent, false)
+        val view: View =LayoutInflater.from(parent.context)
+            .inflate(R.layout.gambling_card_design, parent, false)
         return GambleViewHolder(view)
     }
 
@@ -31,8 +33,18 @@ class GambleAdapter(
     }
 
     override fun onBindViewHolder(holder: GambleViewHolder, position: Int) {
-        holder.SitesName.text = gambleSites.get(position)
-        holder.imageView.setImageResource(imagesGamble.get(position))
-    }
+        val siteUrl = gambleSites[position] // Get the URL directly
+        val image = imagesGamble[position]
 
+        holder.siteName.text = siteNames[position]
+        holder.imageView.setImageResource(image)
+
+        holder.itemView.setOnClickListener {
+            openWebPage(context, siteUrl) // Open the URL in a browser
+        }
+    }
+    private fun openWebPage(context: Context, url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        context.startActivity(intent)
+    }
 }

@@ -41,19 +41,17 @@ class LoginPage : AppCompatActivity() {
         signUpHyperLink = findViewById(R.id.signUpHyperLink)
 
         backButtonLP.setOnClickListener {
-            var intent = Intent(this@LoginPage, MainActivity::class.java)
+            val intent = Intent(this@LoginPage, MainActivity::class.java)
             startActivity(intent)
         }
         signUpHyperLink.setOnClickListener {
-            var intent = Intent(this@LoginPage, SignUpPage::class.java)
+            val intent = Intent(this@LoginPage, SignUpPage::class.java)
             startActivity(intent)
         }
 
         binding.loginButton.setOnClickListener{
-            //login button being clicked causes email and password input to be stored into both variables below
             val userEmail = binding.editTextTextEmailAddress2.text.toString()
             val userPassword = binding.editTextTextPassword3.text.toString()
-            //Sign In with Firebase function logs user in with email and password if successful
             signInWithFirebase(userEmail,userPassword)
 
         }
@@ -72,7 +70,6 @@ class LoginPage : AppCompatActivity() {
                         Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginPage,HomePage::class.java)
                     startActivity(intent)
-
 
                 } else {
                     // If sign in fails, display a message to the user, specifically an exception.

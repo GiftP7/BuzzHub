@@ -12,11 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuzzHub"
         tools:targetApi="31">
-        <activity android:name=".Exhibitions"/>
-        <activity android:name=".GambleActivity"/>
-        <activity android:name=".SportingEventsActivity"/>
-        <activity android:name=".Comedy"/>
-        <activity android:name=".FestivalsActivity"/>
+        <activity
+            android:name=".ProfilePage"
+            android:exported="false" />
+        <activity android:name=".Exhibitions" />
+        <activity android:name=".GambleActivity" />
+        <activity android:name=".SportingEventsActivity" />
+        <activity android:name=".Comedy" />
+        <activity android:name=".FestivalsActivity" />
         <activity android:name=".addHostActivity" />
         <activity android:name=".HomePage" />
         <activity

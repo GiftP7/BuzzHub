@@ -86,7 +86,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun menuAdapter(context: Context, array:Int, menuSpinner:Spinner){
-        var arrayAdapter = ArrayAdapter.createFromResource(context,
+        val arrayAdapter = ArrayAdapter.createFromResource(context,
             array,
             android.R.layout.simple_spinner_item)
 
@@ -100,14 +100,17 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if(parent!=null){
-            var a = parent.getItemAtPosition(position)
+            val a = parent.getItemAtPosition(position)
             when(a){
-                "Log Out" -> {var intent = Intent(this@HomePage,LoginPage::class.java)
+                "Log Out" -> {val intent = Intent(this@HomePage,LoginPage::class.java)
                               startActivity(intent)
                               Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
                                   Toast.LENGTH_LONG).show()
                                 finish()}
-                //"Profile" ->Leads to profile screen
+                "Profile" -> {val intent = Intent(this@HomePage,ProfilePage::class.java)
+                               startActivity(intent)
+                               Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
+                                   Toast.LENGTH_LONG).show()}
                     //"Settings" ->Leads to Settings screen
                         //"Recommendations" -> Leads to Recommendations screen
             }

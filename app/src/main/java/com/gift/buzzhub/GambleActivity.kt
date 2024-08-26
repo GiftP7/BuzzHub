@@ -15,6 +15,7 @@ class GambleActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     var gambleSites= ArrayList<String>()
     var imagesGamble= ArrayList<Int>()
+    val siteNames = arrayListOf("HollywoodBet", "Betway", "LottoStar", "SupaBet")
 
     lateinit var adapter: GambleAdapter
 
@@ -34,18 +35,20 @@ class GambleActivity : AppCompatActivity() {
         }
         recyclerView = findViewById(R.id.gamblingRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this@GambleActivity)
+        gambleSites = arrayListOf(
+            "https://m.hollywoodbets.net/",
+            "https://reg.betway.co.za/Sports?register=1&btag=P72188-PR24678-CM74973-TS1990856&gclid=CjwKCAjwoJa2BhBPEiwA0l0ImJWvRT9sxObDTWCMDqKcXSvffG8Hw9kSYJsptEhCnmCMAe3MCVU_RhoC59IQAvD_BwE",
+            "https://lottostar.co.za/",
+            "https://www.supabets.co.za/"
+        )
 
-        gambleSites.add("Visit hollywoodBets.co.za")
-        gambleSites.add("Visit betway.co.za")
-        gambleSites.add("Visit lottostars.co.za")
-        gambleSites.add("Visit supabet.co.za")
 
         imagesGamble.add(R.drawable.hollywoodbets)
         imagesGamble.add(R.drawable.betway)
         imagesGamble.add(R.drawable.lottostar)
         imagesGamble.add(R.drawable.supabets)
 
-        adapter= GambleAdapter(gambleSites,imagesGamble,this@GambleActivity)
+        adapter= GambleAdapter(gambleSites,imagesGamble,siteNames,this@GambleActivity)
         recyclerView.adapter= adapter
 
 

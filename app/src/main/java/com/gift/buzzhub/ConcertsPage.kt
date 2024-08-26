@@ -25,9 +25,9 @@ class ConcertsPage : AppCompatActivity() {
             insets
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(this@ConcertsPage)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         fillArray(nameList,detailsList)
-        adapter = ConcertsPageAdapter(nameList,detailsList,this@ConcertsPage)
+        adapter = ConcertsPageAdapter(nameList,detailsList,this)
         recyclerView.adapter = adapter
 
     }

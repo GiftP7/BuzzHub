@@ -78,6 +78,12 @@ class HomePageAdapter(var nameList:ArrayList<String>,
                 Toast.makeText(context,"You have selected ${nameList[position]}",
                     Toast.LENGTH_LONG).show()
             }
+            "Concerts" -> {
+                val intent = Intent(activityContext, ConcertsPage::class.java)
+                activityContext.startActivity(intent)
+                Toast.makeText(context,"You have selected ${nameList[position]}",
+                    Toast.LENGTH_LONG).show()
+            }
             else -> { Toast.makeText(context,"You have selected ${nameList[position]}",
                 Toast.LENGTH_LONG).show()}
         }

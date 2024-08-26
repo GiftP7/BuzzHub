@@ -12,7 +12,7 @@ class ConcertsPage : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: ConcertsPageAdapter
-    var nameList = ArrayList<String>()
+    var namesList = ArrayList<String>()
     var detailsList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +25,10 @@ class ConcertsPage : AppCompatActivity() {
             insets
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        fillArray(nameList,detailsList)
-        adapter = ConcertsPageAdapter(nameList,detailsList,this)
+        recyclerView = findViewById(R.id.concertsRecycleView)
+        recyclerView.layoutManager = LinearLayoutManager(this@ConcertsPage)
+        fillArray(namesList,detailsList)
+        adapter = ConcertsPageAdapter(namesList,detailsList,this@ConcertsPage)
         recyclerView.adapter = adapter
 
     }

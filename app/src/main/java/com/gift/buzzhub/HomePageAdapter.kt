@@ -12,12 +12,14 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class HomePageAdapter(var nameList:ArrayList<String>,
-                      var detailsList:ArrayList<String>,
-                      var imageList:ArrayList<Int>,
-                      var context: Context,
-                        private val activityContext: Context): RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
-     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+class HomePageAdapter(
+    private val nameList:ArrayList<String>,
+    private val detailsList:ArrayList<String>,
+    private val imageList:ArrayList<Int>,
+    private val context: Context,
+    private val activityContext: Context): RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
+
+        class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
          var textViewName: TextView = itemView.findViewById(R.id.textViewCategoryName)
          var textViewDetail: TextView = itemView.findViewById(R.id.textViewCategoryDetails)
          var imageView: ImageView = itemView.findViewById(R.id.category_image)
@@ -90,7 +92,4 @@ class HomePageAdapter(var nameList:ArrayList<String>,
 
     }
 
-
-
-
-}
+    }

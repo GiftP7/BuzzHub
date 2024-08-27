@@ -111,7 +111,10 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                startActivity(intent)
                                Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
                                    Toast.LENGTH_LONG).show()}
-                    //"Settings" ->Leads to Settings screen
+                "Settings" -> {val intent = Intent(this@HomePage,SettingsPage::class.java)
+                               startActivity(intent)
+                               Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
+                                   Toast.LENGTH_LONG).show()}
                         //"Recommendations" -> Leads to Recommendations screen
             }
         }

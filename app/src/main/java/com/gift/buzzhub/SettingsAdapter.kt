@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class SettingsAdapter( var settingsList: ArrayList<String>,
-    var context: Context, ) : RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder>() {
+class SettingsAdapter(
+    var settingsList: ArrayList<String>,
+    ) : RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder>() {
 
     class SettingsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textSettings : TextView = itemView.findViewById(R.id.settingsText)
@@ -17,7 +18,7 @@ class SettingsAdapter( var settingsList: ArrayList<String>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.settings_design, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.settings_design, parent, false)
 
         return SettingsViewHolder(view)
     }

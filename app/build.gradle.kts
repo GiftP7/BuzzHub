@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth)
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("androidx.cardview:cardview:1.0.0")
     implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

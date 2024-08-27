@@ -7,12 +7,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gift.buzzhub.R
 
 class SettingsPage : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     var settingsList = ArrayList<String>()
-
     lateinit var adapter: SettingsAdapter
 
 
@@ -20,6 +20,7 @@ class SettingsPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings_page)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -27,7 +28,7 @@ class SettingsPage : AppCompatActivity() {
 
         }
         recyclerView = findViewById(R.id.settings_recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this@SettingsPage)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         settingsList.add("Account")
         settingsList.add("Notification")
@@ -37,7 +38,7 @@ class SettingsPage : AppCompatActivity() {
         settingsList.add("Privacy policy")
         settingsList.add("Delete account")
 
-        adapter = SettingsAdapter(settingsList, this@SettingsPage)
+        adapter = SettingsAdapter(settingsList)
         recyclerView.adapter = adapter
 
 

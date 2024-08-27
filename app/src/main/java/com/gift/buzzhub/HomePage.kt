@@ -114,9 +114,6 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     //"Settings" ->Leads to Settings screen
                         //"Recommendations" -> Leads to Recommendations screen
             }
-            Toast.makeText(this,
-                "You have selected ${parent.getItemAtPosition(position)}",
-                Toast.LENGTH_LONG).show()
         }
     }
 

@@ -52,7 +52,21 @@ class LoginPage : AppCompatActivity() {
         binding.loginButton.setOnClickListener{
             val userEmail = binding.editTextTextEmailAddress2.text.toString()
             val userPassword = binding.editTextTextPassword3.text.toString()
-            signInWithFirebase(userEmail,userPassword)
+
+            if (userEmail.isNotBlank() && userPassword.isNotBlank() && android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+                signInWithFirebase(userEmail, userPassword)
+            } else {
+                if (userEmail.isBlank()) {
+                    Toast.makeText(applicationContext,"Email field cannot be blank",Toast.LENGTH_SHORT).show()
+                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+                    Toast.makeText(applicationContext,"Invalid Email Format",Toast.LENGTH_SHORT).show()
+                }
+                if (userPassword.isBlank()) {
+                    Toast.makeText(applicationContext,"Password field cannot be blank",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
 
         }
     }

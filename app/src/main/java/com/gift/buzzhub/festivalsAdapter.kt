@@ -4,9 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import de.hdodenhof.circleimageview.CircleImageView
 
 class festivalsAdapter(
 
@@ -19,9 +19,9 @@ class festivalsAdapter(
 
     class festivalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        var cottonFestHeading : TextView = itemView.findViewById(R.id.cottonFestHeading)
-        var cottonFestDescription : TextView = itemView.findViewById(R.id.cottonFestDescription)
-        var imageView : CircleImageView = itemView.findViewById((R.id.cottonfestimg))
+        var cottonFestHeading : TextView = itemView.findViewById(R.id.txtEventName)
+        var cottonFestDescription : TextView = itemView.findViewById(R.id.txtEventDetails)
+        var imageView : ImageView = itemView.findViewById((R.id.txtPrice))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): festivalViewHolder {

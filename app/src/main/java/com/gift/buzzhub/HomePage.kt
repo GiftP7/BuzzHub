@@ -14,8 +14,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.gift.buzzhub.databinding.ActivityHomePageBinding
-
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -42,15 +44,33 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         menuSpinner = findViewById(R.id.menu_spinner)
-        recyclerView = findViewById(R.id.categoryRecycleView)
-        recyclerView.layoutManager = LinearLayoutManager(this@HomePage)
-        fillArray(nameList,detailsList,imageList)
 
-        adapter = HomePageAdapter(nameList, detailsList, imageList, this@HomePage, this)
-        recyclerView.adapter = adapter
         var menuArray = R.array.Menu
 
         menuAdapter(this@HomePage,menuArray,menuSpinner)
+
+
+
+
+        /// TAB LAYOUT
+
+        val tabsArray = arrayOf("FESTIVALS" ,"SPORTING EVENTS" ,"GAMBLING","EXHIBITIONS")
+
+        // MISSING FRAGMENTS ::  CONCERTS , COMEDY SHOW
+        // INCOMPLETE :: EXHIBITIONS
+
+
+        val tabLayout = findViewById<TabLayout>(R.id.allTabs)
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+
+        val fragments = arrayOf(FestivalsFragment(),Sporting_events_Fragment(),GamblingFragment(),Exhibitions())
+
+        val adapter = ViewPagerAdapter(fragments,supportFragmentManager, lifecycle)
+
+        viewPager.adapter = adapter
+
+        TabLayoutMediator(tabLayout,viewPager){tab,position ->
+            tab.text = "${tabsArray[position]}"}.attach()
 
 
     }

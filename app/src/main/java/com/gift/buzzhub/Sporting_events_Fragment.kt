@@ -1,18 +1,15 @@
 package com.gift.buzzhub
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class Exhibitions : Fragment() {
+
+class Sporting_events_Fragment : Fragment() {
 
 
     lateinit var recyclerView: RecyclerView
@@ -20,6 +17,7 @@ class Exhibitions : Fragment() {
     var event_details = ArrayList<String>()
     var event_price = ArrayList<String>()
     var image_list = ArrayList<Int>()
+    lateinit var adapter : events_adapter
 
 
     override fun onCreateView(
@@ -27,8 +25,8 @@ class Exhibitions : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var view = inflater.inflate(R.layout.activity_exhibitions, container, false)
-        recyclerView = view.findViewById(R.id.recyclerViewExhibitions)
+        var view = inflater.inflate(R.layout.activity_sporting_events, container, false)
+        recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         event_name.add("Alberton FC VS Boksburg Eagles")
@@ -50,11 +48,15 @@ class Exhibitions : Fragment() {
 
         image_list.add(R.drawable.soccer)
         image_list.add(R.drawable.hockey)
+        image_list.add(R.drawable.marathon)
+        image_list.add(R.drawable.athletics)
 
+        adapter = events_adapter(event_name,event_details,event_price ,image_list, requireContext())
 
-        // FRAGMENT STILL NEEDS AN ADAPTER CLASS
-
+        recyclerView.adapter = adapter
 
         return view
     }
-}
+
+
+    }

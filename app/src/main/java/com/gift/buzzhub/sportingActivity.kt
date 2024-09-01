@@ -35,7 +35,6 @@ class SportingEventsActivity : AppCompatActivity() {
         image_list.add(R.drawable.marathon)
         image_list.add(R.drawable.athletics)
 
-        adapter = events_adapter(event_name,image_list,this@SportingEventsActivity)
 
         recyclerView.adapter = adapter
         }

@@ -2,7 +2,6 @@ package com.gift.buzzhub
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -12,9 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.gift.buzzhub.databinding.ActivityLoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 class LoginPage : AppCompatActivity() {
 
@@ -31,13 +27,13 @@ class LoginPage : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainLogin)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.hostLogin)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        backButtonLP = findViewById(R.id.backButtonLP)
+        backButtonLP = findViewById(R.id.backButtonHostLP)
         signUpHyperLink = findViewById(R.id.signUpHyperLink)
 
         backButtonLP.setOnClickListener {

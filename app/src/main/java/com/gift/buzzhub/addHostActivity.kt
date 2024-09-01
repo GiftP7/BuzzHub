@@ -1,5 +1,6 @@
 package com.gift.buzzhub
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,9 @@ class addHostActivity : AppCompatActivity() {
     lateinit var txtPhone:TextInputEditText
     lateinit var txtCity:TextInputEditText
     lateinit var txtName:TextInputEditText
+    lateinit var password1:TextInputEditText
+    lateinit var password2:TextInputEditText
+    lateinit var loginHyperLink: TextView
     lateinit var btnHostSignUp:Button
 
 
@@ -43,6 +48,10 @@ class addHostActivity : AppCompatActivity() {
 
         // Binding spinner component to spinner object
         spinner = findViewById(R.id.provinceSpinner)
+        loginHyperLink = findViewById(R.id.loginTextView)
+        password1 = findViewById(R.id.password1)
+        password2 = findViewById(R.id.password2)
+
 
 
 
@@ -80,7 +89,14 @@ class addHostActivity : AppCompatActivity() {
                 }
 
             }
+
+        loginHyperLink.setOnClickListener{
+            val intent= Intent(this@addHostActivity,HostLogin::class.java)
+            startActivity(intent)
         }
+        }
+
+
 
     fun alert(allValid:Boolean){
         var alertDialog = AlertDialog.Builder(this)

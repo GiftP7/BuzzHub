@@ -24,6 +24,7 @@
             android:layout_height="281dp"
             android:layout_marginStart="85dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="center_horizontal"
             android:text="Are you an event organiser?"
             android:textAlignment="center"
@@ -37,9 +38,22 @@
             android:layout_height="61dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="170dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="List your events here and let's get Buzzing"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"/>
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/btnBack"
+
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#92EA92"
+            android:paddingStart="10dp"
+            app:icon="@drawable/back_arrow"
+            app:iconSize="30dp"
+            app:iconTint="#616060" />
     </FrameLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -73,6 +87,7 @@
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:capitalize="words"
+                        android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:hint="enter your name" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -91,6 +106,7 @@
                         android:id="@+id/txtEmail"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
                         android:gravity="center" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,6 +119,7 @@
                         android:id="@+id/password1"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,6 +163,7 @@
                         android:id="@+id/txtCity"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
                         android:gravity="center" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,6 +182,7 @@
                         android:id="@+id/txtPhone"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:hint="enter your contact details"
                         android:inputType="phone" />
@@ -177,6 +196,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="#009988"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:text="Sign me up!"
                     android:textColorLink="#8BC34A"
@@ -188,7 +208,7 @@
                     android:id="@+id/loginTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:text="Already a Host? Log In Here"
                     android:textColor="#009988" />

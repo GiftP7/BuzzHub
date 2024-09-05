@@ -13,6 +13,39 @@
         android:theme="@style/Theme.BuzzHub"
         tools:targetApi="31">
         <activity
+            android:name=".TwoFactorAuthPage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProfilePage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateContactNumberPage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEmailPage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateNamePage"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteAccountPage"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacyPolicyPage"
+            android:exported="false" />
+        <activity
+            android:name=".HelpCentrePage"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayPage"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentMethodsPage"
+            android:exported="false" />
+        <activity
+            android:name=".AccountPage"
+            android:exported="false" />
+        <activity
             android:name=".HostLogin"
             android:exported="false" />
         <activity

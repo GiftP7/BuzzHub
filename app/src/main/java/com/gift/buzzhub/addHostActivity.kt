@@ -28,6 +28,7 @@ class addHostActivity : AppCompatActivity() {
     lateinit var password2:TextInputEditText
     lateinit var loginHyperLink: TextView
     lateinit var btnHostSignUp:Button
+    lateinit var btnBack:Button
 
 
 
@@ -70,8 +71,17 @@ class addHostActivity : AppCompatActivity() {
         txtName = findViewById(R.id.txtName)
         txtEmail = findViewById(R.id.txtEmail)
         btnHostSignUp = findViewById(R.id.btnHostSignUp)
+        btnBack = findViewById(R.id.btnBack)
 
 
+        btnBack.setOnClickListener{
+
+            val intent= Intent(this@addHostActivity,SignUpPage::class.java)
+            startActivity(intent)
+
+
+
+        }
         btnHostSignUp.setOnClickListener {
             if (txtEmail.text.toString() == "" ) {
                 //alert(false)
@@ -95,6 +105,8 @@ class addHostActivity : AppCompatActivity() {
             startActivity(intent)
         }
         }
+
+
 
 
 

@@ -19,7 +19,8 @@
         <activity
             android:name=".SettingsPage"
             android:exported="false" />
-        <activity android:name=".HostDashboard"/>
+        <activity android:name=".HostDashboard"
+            android:exported="false"/>
         <activity android:name=".PaymentMethodsPage"/>
         <activity android:name=".AccountPage"/>
         <activity android:name=".DeleteAccountPage"/>

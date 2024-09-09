@@ -21,7 +21,7 @@
             android:exported="false" />
         <activity android:name=".HostDashboard"/>
         <activity android:name=".PaymentMethodsPage"/>
-        <activty android:name=".AccountPage"/>
+        <activity android:name=".AccountPage"/>
         <activity android:name=".DeleteAccountPage"/>
         <activity android:name=".DisplayPage"/>
         <activity android:name=".HelpCentrePage"/>

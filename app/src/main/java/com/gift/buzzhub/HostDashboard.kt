@@ -1,6 +1,6 @@
 package com.gift.buzzhub
 
-import FirstFragment
+
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,9 +30,6 @@ class HostDashboard : AppCompatActivity() {
         val ft:FragmentTransaction = fragmentManager.beginTransaction()
         val eventsFragment = FirstFragment()
 
-        val fragmentManager1: FragmentManager = supportFragmentManager
-        val ft2:FragmentTransaction = fragmentManager1.beginTransaction()
-        val eventsFragment1 = SecondFragment()
 
 
 
@@ -44,7 +41,7 @@ class HostDashboard : AppCompatActivity() {
         binding.viewPager.adapter = adapter
         binding.tbLayout.setupWithViewPager(binding.viewPager)
 
-        val hostId = intent.getStringExtra("hostId")
+        /*val hostId = intent.getStringExtra("hostId")
         val hostEvents = intent.getStringExtra("hostEvents")
         val hostName = intent.getStringExtra("hostName")
 
@@ -52,6 +49,6 @@ class HostDashboard : AppCompatActivity() {
         eventsBundle.putString("hostId",hostId)
         eventsBundle.putString("hostEvents",hostEvents)
         eventsBundle.putString("hostName",hostName)
-        eventsFragment.arguments = eventsBundle
+        eventsFragment.arguments = eventsBundle*/
     }
 }

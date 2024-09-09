@@ -32,9 +32,6 @@ class FirstFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
-        return view
-
         addButton.setOnClickListener{
 
         }
@@ -42,6 +39,10 @@ class FirstFragment : Fragment() {
         deleteButton.setOnClickListener{
 
         }
+
+        return view
+
+
     }
 
 

@@ -53,7 +53,7 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation(libs.firebase.storage)
     testImplementation(libs.junit)
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.constraintlayout)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(kotlin("script-runtime"))

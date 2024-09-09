@@ -6,8 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,7 +30,7 @@ class SportingEventsActivity() : AppCompatActivity() {
         }
 
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.account_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         event_name.add("Alberton FC VS Boksburg Eagles")

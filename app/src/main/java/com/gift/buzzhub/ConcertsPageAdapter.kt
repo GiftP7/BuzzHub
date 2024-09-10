@@ -10,16 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ConcertsPageAdapter(var nameList:ArrayList<String>,
                             var detailsList:ArrayList<String>,
+                            var priceList:ArrayList<String>,
                             var context: Context): RecyclerView.Adapter<ConcertsPageAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var textViewName: TextView = itemView.findViewById(R.id.concertsRecycleViewName)
-        var textViewDetail: TextView = itemView.findViewById(R.id.concertsRecycleViewDetails)
+        var textViewName: TextView = itemView.findViewById(R.id.txtEventName)
+        var textViewDetail: TextView = itemView.findViewById(R.id.txtEventDetails)
+        var textViewPrice: TextView = itemView.findViewById(R.id.txtPrice)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.concerts_recycle_view,parent,false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.card_view,parent,false)
         return ViewHolder(view)
     }
 
@@ -30,5 +32,6 @@ class ConcertsPageAdapter(var nameList:ArrayList<String>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textViewName.text = nameList.get(position)
         holder.textViewDetail.text = detailsList.get(position)
+        holder.textViewPrice.text = priceList.get(position)
     }
 }

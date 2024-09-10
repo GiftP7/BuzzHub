@@ -72,17 +72,20 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         // TABS LAYOUT CODE!!
 
-        val tabsArray = arrayOf("FESTIVALS","GAMBLING" ,"SPORTING EVENTS")
+        val tabsArray = arrayOf("FESTIVALS" ,"SPORTING EVENTS","GAMBLING" ,"COMEDY","EXHIBITIONS","CONCERTS")
         val tabLayout = findViewById<TabLayout>(R.id.allTabs)
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
 
-        val fragments = arrayOf(FestivalsFragment(),GamblingFragment(),Sporting_events_Fragment())
+        val fragments = arrayOf(FestivalsFragment(),Sporting_events_Fragment(),GamblingFragment(),ComedyFragment(),concertsFragment())
 
         val adapter = ViewPagerAdapter(fragments,supportFragmentManager, lifecycle)
+
+
 
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout,viewPager){tab,position ->
+
             tab.text = "${tabsArray[position]}"}.attach()
 
 
@@ -125,7 +128,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         )
 
         menuSpinner.adapter = arrayAdapter
-        menuSpinner.onItemSelectedListener = this
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

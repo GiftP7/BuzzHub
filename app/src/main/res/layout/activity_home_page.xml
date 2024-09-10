@@ -98,34 +98,34 @@
                 app:tabTextColor="#070000">
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/ConcertsTab"
+                    android:id="@+id/tabItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Concerts" />
+                    android:text="Tab2" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/festivalsTab"
+                    android:id="@+id/tabItem2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Festivals" />
+                    android:text="Tab2" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/comedyTab"
+                    android:id="@+id/tabItem3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Comedy Shows" />
+                    android:text="Tab2" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/ExhibitionsTab"
+                    android:id="@+id/tabItem4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exhibitions" />
+                    android:text="Tab2" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/SportingTab"
+                    android:id="@+id/tabItem5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sporting Events" />
+                    android:text="Tab2" />
             </com.google.android.material.tabs.TabLayout>
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"

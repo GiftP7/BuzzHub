@@ -37,17 +37,23 @@ class Sporting_events_Fragment : Fragment() {
         event_name.add("CANTSA Breast Cancer Marathon")
 
         event_details.add("874 Katlehong Avenue, Johannesburg")
+        event_details.add("45 Groove Street, Kempton Park")
         event_details.add("474 Brian Avenue, Pretoria")
         event_details.add("45 Groove Street, Kempton Park")
+        event_details.add("874 Katlehong Avenue, Johannesburg")
         event_details.add("841 Katlehong Avenue, Eden Park")
 
-        event_price.add("R900")
         event_price.add("R650")
+        event_price.add("R900")
         event_price.add("R210")
+        event_price.add("R650")
         event_price.add("R580")
+        event_price.add("R210")
 
+        image_list.add(R.drawable.hockey)
         image_list.add(R.drawable.soccer)
         image_list.add(R.drawable.hockey)
+        image_list.add(R.drawable.soccer)
         image_list.add(R.drawable.marathon)
         image_list.add(R.drawable.athletics)
 

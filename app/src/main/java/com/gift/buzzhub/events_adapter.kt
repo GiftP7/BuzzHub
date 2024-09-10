@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
@@ -16,12 +17,12 @@ class events_adapter(
     class eventviewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         var textViewEventname: TextView = itemView.findViewById(R.id.textViewEventDetails)
-        var imageView : CircleImageView = itemView.findViewById(R.id.eventImage)
+        var imageView : ImageView = itemView.findViewById(R.id.eventImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): eventviewHolder {
         val view:View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_sporting_design,parent,false )
+            .inflate(R.layout.card_view,parent,false )
 
         return eventviewHolder(view)
     }

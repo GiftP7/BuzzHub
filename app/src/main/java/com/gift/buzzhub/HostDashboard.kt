@@ -26,29 +26,43 @@ class HostDashboard : AppCompatActivity() {
             insets
         }
 
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val ft:FragmentTransaction = fragmentManager.beginTransaction()
         val eventsFragment = FirstFragment()
+        val analyticsFragment = SecondFragment()
+        val financialsFragment = ThirdFragment()
+
+
+        val hostId = intent.getStringExtra("hostId")
+        val hostEvents = intent.getIntExtra("hostEvents",0)
+        val hostName = intent.getStringExtra("hostName")
+        val hostClicks = intent.getIntExtra("hostClicks",0)
+
+        val eventsBundle = Bundle()
+        eventsBundle.putString("hostId",hostId)
+        eventsBundle.putInt("hostEvents",hostEvents)
+        eventsBundle.putString("hostName",hostName)
+        eventsBundle.putInt("hostClicks",hostClicks)
+        eventsFragment.arguments = eventsBundle
+
+        val analyticsBundle = Bundle()
+        analyticsBundle.putString("hostId",hostId)
+        analyticsBundle.putInt("hostEvents",hostEvents)
+        analyticsBundle.putString("hostName",hostName)
+        analyticsBundle.putInt("hostClicks",hostClicks)
+        analyticsFragment.arguments = analyticsBundle
 
 
 
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(FirstFragment(),"Events")
-        adapter.addFragment(SecondFragment(),"Analytics")
-        adapter.addFragment(ThirdFragment(),"Financials")
+        adapter.addFragment(eventsFragment,"Events")
+        adapter.addFragment(analyticsFragment,"Analytics")
+        adapter.addFragment(financialsFragment,"Financials")
 
         binding.viewPager.adapter = adapter
         binding.tbLayout.setupWithViewPager(binding.viewPager)
 
-        val hostId = intent.getStringExtra("hostId")
-        val hostEvents = intent.getStringExtra("hostEvents")
-        val hostName = intent.getStringExtra("hostName")
 
-        val eventsBundle = Bundle()
-        eventsBundle.putString("hostId",hostId)
-        eventsBundle.putString("hostEvents",hostEvents)
-        eventsBundle.putString("hostName",hostName)
-        eventsFragment.arguments = eventsBundle
+
+
     }
 }

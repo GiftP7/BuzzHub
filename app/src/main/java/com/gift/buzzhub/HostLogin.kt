@@ -89,10 +89,10 @@ class HostLogin : AppCompatActivity() {
                             Toast.makeText(applicationContext, "Login Successful", Toast.LENGTH_SHORT).show()
                             editTextEmail.text.clear()
                             editTextPassword.text.clear()
-                            return
+
                         } else {
                             Toast.makeText(applicationContext, "Incorrect Password. Try again", Toast.LENGTH_SHORT).show()
-                            return
+
                         }
                     }
                 }

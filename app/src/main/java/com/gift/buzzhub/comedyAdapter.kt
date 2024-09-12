@@ -4,21 +4,25 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
 
 class comedyAdapter (
     var comedyEventList : ArrayList<String>,
-    var detailsEventList : ArrayList<String>,
+    var comedyEventDetails : ArrayList<String>,
+    var comedyEventPrice : ArrayList<String>,
     var imageList : ArrayList<Int>,
 
     var context : Context) : RecyclerView.Adapter<comedyAdapter.EventViewHolder>() {
 
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        var textViewEventDetails : TextView = itemView.findViewById(R.id.textViewEventDetails)
-        var imageView: CircleImageView = itemView.findViewById(R.id.eventImage)
+        var textViewEventName : TextView = itemView.findViewById(R.id.txtEventName)
+        var textViewEventDetails : TextView = itemView.findViewById(R.id.txtEventDetails)
+        var textViewEventPrice : TextView = itemView.findViewById(R.id.txtPrice)
+        var imageView: ImageView = itemView.findViewById(R.id.EventImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -35,7 +39,9 @@ class comedyAdapter (
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
 
-        holder.textViewEventDetails.text =comedyEventList[position]
+        holder.textViewEventName.text = comedyEventList[position]
+        holder.textViewEventDetails.text = comedyEventDetails[position]
+        holder.textViewEventPrice.text = comedyEventPrice[position]
         holder.imageView.setImageResource(imageList[position])
 
     }

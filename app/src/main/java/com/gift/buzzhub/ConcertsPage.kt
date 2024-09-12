@@ -26,10 +26,10 @@ class ConcertsPage : AppCompatActivity() {
         }
 
         recyclerView = findViewById(R.id.concertsRecycleView)
-        recyclerView.layoutManager = LinearLayoutManager(this@ConcertsPage)
+       // recyclerView.layoutManager = LinearLayoutManager(this@ConcertsPage)
         fillArray(namesList,detailsList)
-        adapter = ConcertsPageAdapter(namesList,detailsList,this@ConcertsPage)
-        recyclerView.adapter = adapter
+       // adapter = ConcertsPageAdapter(namesList,detailsList,this@ConcertsPage)
+      //  recyclerView.adapter = adapter
 
     }
 

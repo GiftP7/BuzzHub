@@ -5,12 +5,12 @@
     android:id="@+id/hostLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginPage"
+    tools:context=".HostLogin"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal">
 
     <TextView
-        android:id="@+id/signUpHyperLink"
+        android:id="@+id/hostSignUpHyperLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/hostEditTextTextPassword3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
@@ -69,10 +69,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/hostEditTextTextEmailAddress2" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/hostEditTextTextEmailAddress2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/hostLoginButton"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
@@ -95,7 +95,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/hostEditTextTextPassword3" />
 
     <TextView
         android:id="@+id/textView4"

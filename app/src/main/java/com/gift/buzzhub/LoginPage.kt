@@ -27,13 +27,13 @@ class LoginPage : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.hostLogin)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.userLogin)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        backButtonLP = findViewById(R.id.backButtonHostLP)
+        backButtonLP = findViewById(R.id.backButtonLP)
         signUpHyperLink = findViewById(R.id.signUpHyperLink)
 
         backButtonLP.setOnClickListener {

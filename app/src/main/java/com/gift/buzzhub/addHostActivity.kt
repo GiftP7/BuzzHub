@@ -4,18 +4,22 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
-
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class addHostActivity : AppCompatActivity() {
@@ -29,7 +33,12 @@ class addHostActivity : AppCompatActivity() {
     lateinit var loginHyperLink: TextView
     lateinit var btnHostSignUp:Button
     lateinit var btnBack:Button
+    lateinit var catSpinner: Spinner
+    lateinit var province:String
+    lateinit var category:String
 
+    val database:FirebaseDatabase = FirebaseDatabase.getInstance()
+    val myReference: DatabaseReference = database.reference.child("Hosts")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +61,24 @@ class addHostActivity : AppCompatActivity() {
         loginHyperLink = findViewById(R.id.loginTextView)
         password1 = findViewById(R.id.password1)
         password2 = findViewById(R.id.password2)
+        catSpinner = findViewById(R.id.categoriesSpinner)
+        txtCity = findViewById(R.id.txtCity)
+        var userName:String
+        var userEmail:String
+        var password:String
+        var cPassword:String
+
+        var city:String
+        var phoneNumber:Long
 
 
 
+        var catAdapter = ArrayAdapter.createFromResource(this,
+            R.array.Categories,
+            android.R.layout.simple_spinner_item)
+
+        catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        catSpinner.adapter = catAdapter
 
         var adapter = ArrayAdapter.createFromResource(
             this,
@@ -76,35 +100,94 @@ class addHostActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener{
 
-            val intent= Intent(this@addHostActivity,SignUpPage::class.java)
-            startActivity(intent)
+            val addHostIntent= Intent(this@addHostActivity,SignUpPage::class.java)
+            startActivity(addHostIntent)
 
 
 
         }
         btnHostSignUp.setOnClickListener {
-            if (txtEmail.text.toString() == "" ) {
-                //alert(false)
-
-                var alertDialog1 = AlertDialog.Builder(this)
-
-                alertDialog1.setTitle("Error: Empty Field(s)").setIcon(
-                    R.drawable.error_icon
-                ).setCancelable(true).setMessage("Please fill in all fields.").create().show()
+                addHostToDatabase()
 
 
-            } else {
-                        alert(true)
+            }
 
+            loginHyperLink.setOnClickListener{
+                val addHostIntent= Intent(this@addHostActivity,HostLogin::class.java)
+                startActivity(addHostIntent)
+            }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(parent!=null){
+                    val a:String = parent.getItemAtPosition(position).toString()
+                    province = a
                 }
 
             }
 
-        loginHyperLink.setOnClickListener{
-            val intent= Intent(this@addHostActivity,HostLogin::class.java)
-            startActivity(intent)
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
+
+        catSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(parent!=null){
+                    val a:String = parent.getItemAtPosition(position).toString()
+                    category = a
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
+
+        }
+
+    fun addHostToDatabase(){
+        val hostName = txtName.text.toString()
+        val hostEmail = txtEmail.text.toString()
+        val password = password1.text.toString()
+        val cPassword = password2.text.toString()
+        val city = txtCity.text.toString()
+        val phoneNumber = if (txtPhone.text.toString().isNotBlank()) {
+            txtPhone.text.toString().toLong()
+        } else {
+            0L
+        }
+
+        val id:String = myReference.push().key.toString()
+        val check = checkFields(hostName,hostEmail,password,cPassword,province,category,city,phoneNumber)
+
+        if(check){
+            val host = Host(id,hostName,hostEmail,password,province,category,city,phoneNumber,0,0)
+            myReference.child(id).setValue(host).addOnCompleteListener { task ->
+
+                if(task.isSuccessful){
+                    Toast.makeText(applicationContext,
+                        "Account successfully created",
+                        Toast.LENGTH_SHORT).show()
+                    val addHostIntent = Intent(this@addHostActivity,HostLogin::class.java)
+                    startActivity(addHostIntent)
+                    }
+                else{
+                    //Log.d("MyTag", "${task.exception?.toString()}")
+                    Toast.makeText(applicationContext,
+                        task.exception?.toString(),
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        else{
+            var alertDialog1 = AlertDialog.Builder(this)
+
+            alertDialog1.setTitle("Error: Empty Field(s)").setIcon(
+                R.drawable.error_icon
+            ).setCancelable(true).setMessage("Please fill in all fields.").create().show()
+        }
+
+    }
 
 
 
@@ -128,4 +211,21 @@ class addHostActivity : AppCompatActivity() {
 
 
     }
+
+    fun checkFields(userName: String, userEmail: String, password: String, cPassword: String,
+                    province: String, category: String, city: String, phone: Long): Boolean {
+
+        if (userName.isBlank() || userEmail.isBlank() || password.isBlank() || cPassword.isBlank() ||
+            province.isBlank() || category.isBlank() || city.isBlank() || phone == 0L
+        ) {
+            // At least one field isblank or null
+            return false
+        }
+        // All fields are filled
+        return true
+    }
+
+
+
+
 }

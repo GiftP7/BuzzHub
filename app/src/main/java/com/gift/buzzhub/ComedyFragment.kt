@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ComedyFragment: Fragment() {
@@ -24,6 +25,12 @@ class ComedyFragment: Fragment() {
     ): View? {
         // Inflate the layout for this fragment
          var view = inflater.inflate(R.layout.activity_comedy, container, false)
+
+        recyclerView = view.findViewById(R.id.comedyRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+
+
 
         event_name.add("Alberton FC VS Boksburg Eagles")
         event_name.add("CANTSA Breast Cancer Marathon")

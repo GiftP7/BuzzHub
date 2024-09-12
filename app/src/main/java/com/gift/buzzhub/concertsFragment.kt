@@ -16,6 +16,7 @@ class concertsFragment : Fragment() {
     var namesList = ArrayList<String>()
     var priceList = ArrayList<String>()
     var detailsList = ArrayList<String>()
+    var imgList = ArrayList<Int>()
 
 
     override fun onCreateView(
@@ -26,9 +27,9 @@ class concertsFragment : Fragment() {
         var view = inflater.inflate(R.layout.activity_concerts_page, container, false)
 
         recyclerView = view.findViewById(R.id.concertsRecycleView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        fillArray(namesList,detailsList)
-        adapter = ConcertsPageAdapter(namesList,detailsList,priceList,requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        fillArray(namesList,detailsList,imgList)
+        adapter = ConcertsPageAdapter(namesList,detailsList,priceList,imgList,requireContext())
         recyclerView.adapter = adapter
 
 
@@ -37,7 +38,7 @@ class concertsFragment : Fragment() {
 
         return view
     }
-fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>) {
+fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>,imgList: ArrayList<Int>) {
     nameList.add("Anthony Hamilton Live @SunArena")
     nameList.add("Taylor Swift Eras Tour 2024")
     nameList.add("Louis the Child LIve @Sun Square Garden")
@@ -52,6 +53,11 @@ fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>) {
     priceList.add("R900")
     priceList.add("R200")
     priceList.add("R360")
+
+    imgList.add(R.drawable.colourfest)
+    imgList.add(R.drawable.dstvdeliciousimg)
+    imgList.add(R.drawable.justdanceimg)
+    imgList.add(R.drawable.rockingthedaisiesimg)
 
 
 }

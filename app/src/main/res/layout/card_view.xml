@@ -7,11 +7,12 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_margin="7dp"
         android:backgroundTint="#FFFFFF"
         app:cardCornerRadius="7dp"
         app:cardElevation="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,9 +37,10 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="Sibonelo"
+                android:text="Event Name"
                 android:textColor="#0D0C0C"
                 android:textSize="16sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/EventImage"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,25 +48,28 @@
 
             <TextView
                 android:id="@+id/txtPrice"
-                android:layout_width="75dp"
+                android:layout_width="175dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="178dp"
-                android:text="Price"
+                android:layout_marginStart="26dp"
+                android:layout_marginEnd="1dp"
+                android:text="Price -- R150pp"
+                android:textColor="#F40417"
                 android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/EventImage"
-                app:layout_constraintTop_toBottomOf="@+id/txtEventDetails" />
+                app:layout_constraintTop_toBottomOf="@+id/txtEventDetails"
+                app:layout_constraintVertical_bias="0.611" />
 
             <TextView
                 android:id="@+id/txtEventDetails"
-                android:layout_width="230dp"
-                android:layout_height="24dp"
+                android:layout_width="238dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="8dp"
-                android:text="txtLocation"
+                android:text="Event Details"
                 app:layout_constraintStart_toEndOf="@+id/EventImage"
                 app:layout_constraintTop_toBottomOf="@+id/txtEventName" />
 

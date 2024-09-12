@@ -16,8 +16,8 @@ class events_adapter(
 
     class eventviewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        var textViewEventname: TextView = itemView.findViewById(R.id.textViewEventDetails)
-        var imageView : ImageView = itemView.findViewById(R.id.eventImage)
+        var textViewEventname: TextView = itemView.findViewById(R.id.txtEventName)
+        var imageView : ImageView = itemView.findViewById(R.id.EventImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): eventviewHolder {

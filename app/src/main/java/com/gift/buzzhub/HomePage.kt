@@ -14,12 +14,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.gift.buzzhub.databinding.ActivityHomePageBinding
-import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -31,7 +28,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var nameList = ArrayList<String>()
     var detailsList = ArrayList<String>()
     var imageList = ArrayList<Int>()
-    lateinit var adapter: ViewPagerAdapter
+    lateinit var adapter: ViewPager2Adapter
     lateinit var menuSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +80,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         var fragments= arrayOf(FestivalsFragment(),Sporting_events_Fragment(),concertsFragment(),GamblingFragment())
 
-        val adapter = ViewPagerAdapter(fragments,supportFragmentManager, lifecycle)
+        val adapter = ViewPager2Adapter(fragments,supportFragmentManager, lifecycle)
 
 
 
@@ -136,6 +133,8 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         )
 
         menuSpinner.adapter = arrayAdapter
+
+
 
     }
 

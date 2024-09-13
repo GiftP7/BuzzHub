@@ -26,7 +26,7 @@ class Sporting_events_Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.activity_sporting_events, container, false)
-        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView = view.findViewById(R.id.account_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         event_name.add("Alberton FC VS Boksburg Eagles")

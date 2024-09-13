@@ -48,20 +48,20 @@
 
             <TextView
                 android:id="@+id/txtPrice"
-                android:layout_width="175dp"
-                android:layout_height="24dp"
+                android:layout_width="62dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginEnd="1dp"
-                android:text="Price -- R150pp"
+                android:text="Price"
                 android:textColor="#F40417"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.921"
                 app:layout_constraintStart_toEndOf="@+id/EventImage"
                 app:layout_constraintTop_toBottomOf="@+id/txtEventDetails"
-                app:layout_constraintVertical_bias="0.611" />
+                app:layout_constraintVertical_bias="0.833" />
 
             <TextView
                 android:id="@+id/txtEventDetails"

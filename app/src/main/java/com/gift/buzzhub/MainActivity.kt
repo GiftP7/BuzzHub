@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         loginButtonHP.setOnClickListener {
-            var intent = Intent(this@MainActivity, HomePage::class.java)
+            var intent = Intent(this@MainActivity, LoginPage::class.java)
             startActivity(intent)
         }
     }

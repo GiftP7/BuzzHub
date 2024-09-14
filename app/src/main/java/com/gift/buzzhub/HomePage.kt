@@ -133,6 +133,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         )
 
         menuSpinner.adapter = arrayAdapter
+        menuSpinner.onItemSelectedListener = this
 
 
 

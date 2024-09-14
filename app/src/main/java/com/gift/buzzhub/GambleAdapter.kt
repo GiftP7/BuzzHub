@@ -6,6 +6,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
@@ -19,7 +20,7 @@ class GambleAdapter(
 
     class GambleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var siteName: TextView = itemView.findViewById(R.id.gambleSite)
-        var imageView: CircleImageView = itemView.findViewById(R.id.hollywoodImg)
+        var imageView: ImageView = itemView.findViewById(R.id.gamblingImg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GambleViewHolder {

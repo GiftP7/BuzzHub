@@ -14,10 +14,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.gift.buzzhub.databinding.ActivityHomePageBinding
-
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -27,7 +28,7 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var nameList = ArrayList<String>()
     var detailsList = ArrayList<String>()
     var imageList = ArrayList<Int>()
-    lateinit var adapter: HomePageAdapter
+    lateinit var adapter: ViewPager2Adapter
     lateinit var menuSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,15 +49,52 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         menuSpinner = findViewById(R.id.menu_spinner)
-        recyclerView = findViewById(R.id.categoryRecycleView)
-        recyclerView.layoutManager = LinearLayoutManager(this@HomePage)
-        fillArray(nameList,detailsList,imageList)
 
-        adapter = HomePageAdapter(nameList, detailsList, imageList, this@HomePage, this)
-        recyclerView.adapter = adapter
+
+        // CATAGORIES RECYCLER VIEW CODE!!
+        // recyclerView = findViewById(R.id.categoryRecycleView)
+        // recyclerView.layoutManager = LinearLayoutManager(this@HomePage)
+        // fillArray(nameList,detailsList,imageList)
+
+        // adapter = HomePageAdapter(nameList, detailsList, imageList, this@HomePage, this)
+        // recyclerView.adapter = adapter
+
+
+
+
+
+
+       // SPINNER
         var menuArray = R.array.Menu
 
         menuAdapter(this@HomePage,menuArray,menuSpinner)
+
+        // TABS LAYOUT CODE!!
+
+        var tabsArray = arrayOf("FESTIVALS" ,"SPORTING EVENTS","CONCERTS","GAMBLING" )
+        var tabLayout = findViewById<TabLayout>(R.id.allTabs)
+        var viewPager = findViewById<ViewPager2>(R.id.viewPager)
+
+
+
+
+        var fragments= arrayOf(FestivalsFragment(),Sporting_events_Fragment(),concertsFragment(),GamblingFragment())
+
+        val adapter = ViewPager2Adapter(fragments,supportFragmentManager, lifecycle)
+
+
+
+        viewPager.adapter = adapter
+
+
+
+
+        TabLayoutMediator(tabLayout,viewPager){tab,position ->
+
+            tab.text = "${tabsArray[position]}"}.attach()
+
+
+
 
 
     }
@@ -96,6 +134,9 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         menuSpinner.adapter = arrayAdapter
         menuSpinner.onItemSelectedListener = this
+
+
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

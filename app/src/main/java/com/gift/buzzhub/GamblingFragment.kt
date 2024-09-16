@@ -1,10 +1,12 @@
 package com.gift.buzzhub
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -48,8 +50,45 @@ class GamblingFragment : Fragment() {
         adapter= GambleAdapter(gambleSites,imagesGamble,gambleSitesNames,requireContext())
         recyclerView.adapter= adapter
 
+
+        disclaimerPopUp()
+
+
         return view
     }
+
+
+    fun disclaimerPopUp(){
+
+        var alertDialog1 = AlertDialog.Builder(requireContext())
+
+
+
+        alertDialog1.setTitle("Disclaimer").setIcon(
+            R.drawable.error_icon
+        ).setCancelable(false)
+            .setMessage(getString(R.string.gambling_disclaimer))
+            .setPositiveButton("I agree", DialogInterface.OnClickListener { dialog, which ->
+
+                dialog.cancel()
+
+            })
+            .setNegativeButton("I do not agree", DialogInterface.OnClickListener { dialog, which ->
+
+
+
+            })
+
+
+
+            alertDialog1.create().show()
+
+
+
+
+
+    }
+
 
             }
 

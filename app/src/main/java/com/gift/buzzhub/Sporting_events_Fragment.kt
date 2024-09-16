@@ -29,12 +29,12 @@ class Sporting_events_Fragment : Fragment() {
         recyclerView = view.findViewById(R.id.account_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        event_name.add("Alberton FC VS Boksburg Eagles")
-        event_name.add("CANTSA Breast Cancer Marathon")
         event_name.add("HockeyForChange Tournament")
+        event_name.add("CANTSA Breast Cancer Marathon")
         event_name.add("CANTSA Breast Cancer Marathon")
         event_name.add("East Rand Athletics Day of Fun")
         event_name.add("CANTSA Breast Cancer Marathon")
+        event_name.add("Alberton FC VS Boksburg Eagles")
 
         event_details.add("874 Katlehong Avenue, Johannesburg")
         event_details.add("45 Groove Street, Kempton Park")

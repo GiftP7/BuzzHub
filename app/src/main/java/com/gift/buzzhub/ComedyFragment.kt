@@ -32,12 +32,12 @@ class ComedyFragment: Fragment() {
 
 
 
-        event_name.add("Alberton FC VS Boksburg Eagles")
-        event_name.add("CANTSA Breast Cancer Marathon")
-        event_name.add("HockeyForChange Tournament")
-        event_name.add("CANTSA Breast Cancer Marathon")
-        event_name.add("East Rand Athletics Day of Fun")
-        event_name.add("CANTSA Breast Cancer Marathon")
+        event_name.add("Nina Hastie:Thuma Nina")
+        event_name.add("Skhumba")
+        event_name.add("Trevor Noah")
+        event_name.add("Celeste Ntuli")
+        event_name.add("Mpho Popps")
+        event_name.add("Tumi Morake")
 
         event_details.add("874 Katlehong Avenue, Johannesburg")
         event_details.add("45 Groove Street, Kempton Park")
@@ -53,12 +53,12 @@ class ComedyFragment: Fragment() {
         event_price.add("R580")
         event_price.add("R210")
 
-        image_list.add(R.drawable.comedy)
-        image_list.add(R.drawable.comedy)
-        image_list.add(R.drawable.comedy)
-        image_list.add(R.drawable.comedy)
-        image_list.add(R.drawable.comedy)
-        image_list.add(R.drawable.comedy)
+        image_list.add(R.drawable.nina_hastie)
+        image_list.add(R.drawable.skhumba)
+        image_list.add(R.drawable.trevor_noah)
+        image_list.add(R.drawable.celeste_ntuli)
+        image_list.add(R.drawable.mpho_popps)
+        image_list.add(R.drawable.tumi_morake)
 
         adapter = comedyAdapter(event_name ,event_details,event_price,image_list, requireContext())
 

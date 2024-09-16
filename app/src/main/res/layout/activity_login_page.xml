@@ -30,11 +30,14 @@
         android:id="@+id/backButtonLP"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:backgroundTint="#009988"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#FBF7F7"
         android:fontFamily="@font/poppins_bold"
-        android:text="Back"
+        android:textColor="#100F0F"
+        app:icon="@drawable/back_arrow"
+        app:iconSize="40dp"
+        app:iconTint="#090808"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

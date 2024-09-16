@@ -71,14 +71,14 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         // TABS LAYOUT CODE!!
 
-        var tabsArray = arrayOf("FESTIVALS" ,"SPORTING EVENTS","CONCERTS","GAMBLING" )
+        var tabsArray = arrayOf("FESTIVALS" ,"SPORTING EVENTS","CONCERTS","COMEDY SHOWS","EXHIBITIONS","GAMBLING" )
         var tabLayout = findViewById<TabLayout>(R.id.allTabs)
         var viewPager = findViewById<ViewPager2>(R.id.viewPager)
 
 
 
 
-        var fragments= arrayOf(FestivalsFragment(),Sporting_events_Fragment(),concertsFragment(),GamblingFragment())
+        var fragments= arrayOf(FestivalsFragment(),Sporting_events_Fragment(),concertsFragment(),ComedyFragment(),ExhibitionsFragment(),GamblingFragment())
 
         val adapter = ViewPager2Adapter(fragments,supportFragmentManager, lifecycle)
 

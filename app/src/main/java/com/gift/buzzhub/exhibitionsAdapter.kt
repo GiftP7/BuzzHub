@@ -19,9 +19,9 @@ class exhibitionsAdapter (
 
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        var textViewEventDetails : TextView = itemView.findViewById(R.id.textViewEventDetails)
+        var textViewEventDetails : TextView = itemView.findViewById(R.id.txtEventDetails)
         var detailsEventList : TextView = itemView.findViewById(R.id.txtEventName)
-        var imageView: ImageView = itemView.findViewById(R.id.eventImage)
+        var imageView: ImageView = itemView.findViewById(R.id.EventImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -39,6 +39,7 @@ class exhibitionsAdapter (
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
 
         holder.textViewEventDetails.text =exhibitionsEventList[position]
+        holder.detailsEventList.text =detailsEventList[position]
 
         holder.imageView.setImageResource(imageList[position])
 

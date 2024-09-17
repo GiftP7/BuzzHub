@@ -51,19 +51,6 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         menuSpinner = findViewById(R.id.menu_spinner)
 
 
-        // CATAGORIES RECYCLER VIEW CODE!!
-        // recyclerView = findViewById(R.id.categoryRecycleView)
-        // recyclerView.layoutManager = LinearLayoutManager(this@HomePage)
-        // fillArray(nameList,detailsList,imageList)
-
-        // adapter = HomePageAdapter(nameList, detailsList, imageList, this@HomePage, this)
-        // recyclerView.adapter = adapter
-
-
-
-
-
-
        // SPINNER
         var menuArray = R.array.Menu
 

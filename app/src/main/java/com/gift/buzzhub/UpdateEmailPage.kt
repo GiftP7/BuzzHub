@@ -1,6 +1,8 @@
 
 package com.gift.buzzhub
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -23,6 +25,7 @@ class UpdateEmailPage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,7 @@ class UpdateEmailPage : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
+        sharedPreferences = getSharedPreferences("email_update_prefs", Context.MODE_PRIVATE)
 
         currentEmailEditText = findViewById(R.id.currentEmailEditText)
         confirmEmailEditText = findViewById(R.id.confirmEmailEditText)
@@ -52,39 +56,59 @@ class UpdateEmailPage : AppCompatActivity() {
             //changeEmail(currentEmail, confirmEmail, newEmail, currentPassword)
             if (currentEmail.isEmpty() && confirmEmail.isEmpty() && newEmail.isEmpty() && currentPassword.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
-            } else{
+            } else {
                 changeEmail(currentEmail, confirmEmail, newEmail, currentPassword)
             }
         }
     }
-    private fun changeEmail(currentEmail: String, confirmEmail: String, newEmail: String, currentPassword: String) {
+
+    private fun changeEmail(
+        currentEmail: String,
+        confirmEmail: String,
+        newEmail: String,
+        currentPassword: String
+    ) {
         val currentUser = auth.currentUser
 
-        currentUser?.let{ user ->
-            if (user.email == currentEmail){
-
-                if(newEmail == confirmEmail){
+        currentUser?.let { user ->
+            if (user.email == currentEmail) {
+                if (newEmail == confirmEmail) {
                     val credential = EmailAuthProvider.getCredential(currentEmail, currentPassword)
                     user.reauthenticate(credential)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                // Step 4: Update the email in Firebase Auth
+                                // Send the verification email
                                 user.verifyBeforeUpdateEmail(newEmail)
                                     .addOnCompleteListener { emailUpdateTask ->
                                         if (emailUpdateTask.isSuccessful) {
-
-                                            sendEmailVerification()
+                                            Toast.makeText(
+                                                this,
+                                                "Verification email sent to $newEmail. Please verify it.",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
 
                                         } else {
-                                            Toast.makeText(this, "Failed to update email: ${emailUpdateTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(
+                                                this,
+                                                "Failed to send email verification: ${emailUpdateTask.exception?.message}",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
                                         }
                                     }
                             } else {
-                                Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this,
+                                    "Authentication failed: ${task.exception?.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                 } else {
-                    Toast.makeText(this, "New email and confirmation email do not match", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "New email and confirmation email do not match",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 Toast.makeText(this, "Current email does not match", Toast.LENGTH_SHORT).show()
@@ -94,26 +118,47 @@ class UpdateEmailPage : AppCompatActivity() {
         }
     }
 
-    private fun sendEmailVerification(){
-        val currentUser = auth.currentUser
-        currentUser?.sendEmailVerification()?.addOnCompleteListener{ task->
-            if(task.isSuccessful){
-                updateEmailInDatabase(currentUser.uid, currentUser.email?:"")
-                //Toast.makeText(this, "Email verification sent", Toast.LENGTH_SHORT).show()
+    override fun onStart() {
+        super.onStart()
 
-            }else{
-                Toast.makeText(this, "Failed to send email verification", Toast.LENGTH_SHORT).show()
+        val currentUser = auth.currentUser
+
+        currentUser?.reload()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                if (currentUser.isEmailVerified) {
+                    val emailUpdateDone = sharedPreferences.getBoolean("email_update_done", false)
+
+                    // Show the toast only if the email was just updated
+                    if (!emailUpdateDone) {
+                        updateEmailInDatabase(currentUser.uid, currentUser.email ?: "")
+                        Toast.makeText(this, "Email updated successfully after verification", Toast.LENGTH_SHORT).show()
+
+                        // Mark that the email has been updated and the message should not be shown again
+                        sharedPreferences.edit().putBoolean("email_update_done", true).apply()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Failed to reload user: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
     private fun updateEmailInDatabase(userId: String, newEmail: String) {
         val userRef = database.child("users").child(userId).child("email")
         userRef.setValue(newEmail)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Email updated in database successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Email updated successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    Toast.makeText(this, "Failed to update email in database: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Failed to update email: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }

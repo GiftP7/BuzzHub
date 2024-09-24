@@ -8,20 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import de.hdodenhof.circleimageview.CircleImageView
 
 class SettingsAdapter(
     var settingsList: ArrayList<String>,
+    var imageList: ArrayList<Int>,
     val context: Context
     ) : RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder>() {
 
     class SettingsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textSettings : TextView = itemView.findViewById(R.id.accountText)
+        var imageView : CircleImageView = itemView.findViewById(R.id.profile_image)
 
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.settings_design, parent, false)
+
 
         return SettingsViewHolder(view)
     }
@@ -32,6 +36,7 @@ class SettingsAdapter(
 
     override fun onBindViewHolder(holder: SettingsViewHolder, position: Int) {
         holder.textSettings.text = settingsList[position]
+        holder.imageView.setImageResource(imageList[position])
 
         holder.itemView.setOnClickListener {
             val intent = when (position) {

@@ -2,6 +2,7 @@ package com.gift.buzzhub
 
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,7 @@ class HostDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
 
         binding = ActivityHostDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -33,12 +35,14 @@ class HostDashboard : AppCompatActivity() {
         val hostEvents = intent.getIntExtra("hostEvents",0)
         val hostName = intent.getStringExtra("hostName")
         val hostClicks = intent.getIntExtra("hostClicks",0)
+        val hostCategory = intent.getStringExtra("hostCategory")
 
         val eventsBundle = Bundle()
         eventsBundle.putString("hostId",hostId)
         eventsBundle.putInt("hostEvents",hostEvents)
         eventsBundle.putString("hostName",hostName)
         eventsBundle.putInt("hostClicks",hostClicks)
+        eventsBundle.putString("hostCategory",hostCategory)
         eventsFragment.arguments = eventsBundle
 
         val analyticsBundle = Bundle()
@@ -47,6 +51,7 @@ class HostDashboard : AppCompatActivity() {
         analyticsBundle.putString("hostName",hostName)
         analyticsBundle.putInt("hostClicks",hostClicks)
         analyticsFragment.arguments = analyticsBundle
+
 
 
 
@@ -63,4 +68,8 @@ class HostDashboard : AppCompatActivity() {
 
 
     }
+
 }
+
+
+

@@ -13,27 +13,35 @@
         android:theme="@style/Theme.BuzzHub"
         tools:targetApi="31">
         <activity
+            android:name=".EditEventsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddEventsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteEventsActivity"
+            android:exported="false" />
+        <activity
             android:name=".HostLogin"
             android:exported="false" />
-
         <activity
             android:name=".SettingsPage"
             android:exported="false" />
-        <activity android:name=".HostDashboard"
-            android:exported="false"/>
-        <activity android:name=".PaymentMethodsPage"/>
-        <activity android:name=".AccountPage"/>
-        <activity android:name=".DeleteAccountPage"/>
-        <activity android:name=".DisplayPage"/>
-        <activity android:name=".HelpCentrePage"/>
-        <activity android:name=".NotificationPage"/>
-        <activity android:name=".PrivacyPolicyPage"/>
-        <activity android:name=".TwoFactorAuthPage"/>
-        <activity android:name=".UpdateContactNumberPage"/>
-        <activity android:name=".UpdateEmailPage"/>
-        <activity android:name=".UpdateNamePage"/>
-        <activity android:name=".UpdateProfilePage"/>
-
+        <activity
+            android:name=".HostDashboard"
+            android:exported="false" />
+        <activity android:name=".PaymentMethodsPage" />
+        <activity android:name=".AccountPage" />
+        <activity android:name=".DeleteAccountPage" />
+        <activity android:name=".DisplayPage" />
+        <activity android:name=".HelpCentrePage" />
+        <activity android:name=".NotificationPage" />
+        <activity android:name=".PrivacyPolicyPage" />
+        <activity android:name=".TwoFactorAuthPage" />
+        <activity android:name=".UpdateContactNumberPage" />
+        <activity android:name=".UpdateEmailPage" />
+        <activity android:name=".UpdateNamePage" />
+        <activity android:name=".UpdateProfilePage" />
         <activity android:name=".Exhibitions" />
         <activity android:name=".GambleActivity" />
         <activity android:name=".SportingEventsActivity" />

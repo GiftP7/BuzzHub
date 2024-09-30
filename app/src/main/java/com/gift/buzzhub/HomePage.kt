@@ -9,11 +9,13 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.gift.buzzhub.databinding.ActivityHomePageBinding
@@ -30,6 +32,14 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var imageList = ArrayList<Int>()
     lateinit var adapter: ViewPager2Adapter
     lateinit var menuSpinner: Spinner
+    lateinit var textViewDefault: TextView
+    var userId = ""
+    var userName = ""
+    var userEmail = ""
+    var userPassword = ""
+    var userProvince = ""
+    var userCity = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +59,16 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         menuSpinner = findViewById(R.id.menu_spinner)
+        textViewDefault = findViewById(R.id.textViewDefault)
+        userId = intent.getStringExtra("userId").toString()
+        userName = intent.getStringExtra("userName").toString()
+        userEmail = intent.getStringExtra("userEmail").toString()
+        userPassword = intent.getStringExtra("userPassword").toString()
+        userProvince = intent.getStringExtra("userProvince").toString()
+        userCity = intent.getStringExtra("userCity").toString()
+
+        textViewDefault.text = userName
+
 
 
        // SPINNER
@@ -62,10 +82,17 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var tabLayout = findViewById<TabLayout>(R.id.allTabs)
         var viewPager = findViewById<ViewPager2>(R.id.viewPager)
 
+        var festivalsFragment = FestivalsFragment()
+        var sportingEventsFragment = Sporting_events_Fragment()
+        var concertsFragment = concertsFragment()
+        var comedyFragment = ComedyFragment()
+        var exhibitionsFragment = ExhibitionsFragment()
+        var gamblingFragment = GamblingFragment()
+
+        fragmentMaker(comedyFragment,concertsFragment,exhibitionsFragment,sportingEventsFragment,festivalsFragment,gamblingFragment)
 
 
-
-        var fragments= arrayOf(FestivalsFragment(),Sporting_events_Fragment(),concertsFragment(),ComedyFragment(),ExhibitionsFragment(),GamblingFragment())
+        var fragments= arrayOf(festivalsFragment,sportingEventsFragment,concertsFragment,comedyFragment,exhibitionsFragment,gamblingFragment)
 
         val adapter = ViewPager2Adapter(fragments,supportFragmentManager, lifecycle)
 
@@ -149,6 +176,32 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
+
+    }
+
+    fun fragmentMaker(comedyFragment: Fragment,
+                      concertsFragment: Fragment,
+                      exhibitionsFragment:Fragment,
+                      sportingEventsFragment: Fragment,
+                      festivalsFragment:Fragment,
+                      gamblingFragment: Fragment){
+
+        val bundle = Bundle()
+        bundle.putString("userName",userName)
+        bundle.putString("userId",userId)
+        bundle.putString("userEmail",userEmail)
+        bundle.putString("userPassword",userPassword)
+        bundle.putString("userProvince",userProvince)
+        bundle.putString("userCity",userCity)
+
+        comedyFragment.arguments = bundle
+        concertsFragment.arguments = bundle
+        exhibitionsFragment.arguments = bundle
+        sportingEventsFragment.arguments = bundle
+        festivalsFragment.arguments = bundle
+        gamblingFragment.arguments = bundle
+
+
 
     }
 }

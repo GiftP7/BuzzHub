@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -26,9 +27,12 @@ class DeleteEventsFragment : DialogFragment() {
     lateinit var btnBackDeleteEvents: Button
     val eventDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
     val eventMyReference: DatabaseReference = eventDatabase.reference.child("Events").child("Active Events")
+    val hostDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    val hostActiveReference: DatabaseReference = hostDatabase.reference.child("Hosts")
     var hId:String = ""
     var hName:String = ""
     var imgList = ArrayList<Int>()
+    var hEvents = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +46,7 @@ class DeleteEventsFragment : DialogFragment() {
         hName = arguments?.getString("hostName") ?: "Guest"
         hId = arguments?.getString("hostId") ?: "N/A"
         val hClicks = arguments?.getInt("hostClicks") ?: 0
-        val hEvents = arguments?.getInt("hostEvents") ?: 0
+        hEvents = arguments?.getInt("hostEvents") ?: 0
         val hCategory = arguments?.getString("hostCategory") ?: "N/A"
 
         deleteEventsRecyclerView = view.findViewById(R.id.deleteEventsRecyclerView)
@@ -56,6 +60,8 @@ class DeleteEventsFragment : DialogFragment() {
 
         return view
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +82,25 @@ class DeleteEventsFragment : DialogFragment() {
                 fillArray(imgList)
                 adapter = DeleteEventsAdapter(eventList,imgList,requireContext())
                 deleteEventsRecyclerView.adapter = adapter
+
+                ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0,
+                    ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+                    override fun onMove(
+                        recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder
+                    ): Boolean {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        val id = adapter.getEventId(viewHolder.adapterPosition)
+
+                        eventMyReference.child(id).removeValue()
+                        val hostActiveMap = mutableMapOf<String, Any>()
+                        hostActiveMap["hostEvents"] = hEvents - 1
+                        hostActiveReference.child(hId).updateChildren(hostActiveMap)
+                        Toast.makeText(requireContext(),"The event was deleted successfully",Toast.LENGTH_SHORT).show()
+                    }
+                }).attachToRecyclerView(deleteEventsRecyclerView)
 
 
             }

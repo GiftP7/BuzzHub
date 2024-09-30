@@ -36,9 +36,11 @@ class DeleteEventsAdapter(var eventList:ArrayList<Events>,
         holder.textViewPrice.text = "R${eventList[position].eventPrice.toString()}"
         holder.eventImg.setImageResource(imgList[position])
 
-        holder.cardView.setOnClickListener {
 
-        }
+    }
+
+    fun getEventId(position:Int):String{
+        return eventList[position].eventId
     }
 
 

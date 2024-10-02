@@ -39,13 +39,13 @@ class SettingsPage : AppCompatActivity() {
         settingsList.add("Privacy policy")
         settingsList.add("Delete account")
 
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
-        imageList.add(R.drawable.profileicon)
+        imageList.add(R.drawable.account)
+        imageList.add(R.drawable.notification)
+        imageList.add(R.drawable.payment)
+        imageList.add(R.drawable.display)
+        imageList.add(R.drawable.help_centre)
+        imageList.add(R.drawable.privacy)
+        imageList.add(R.drawable.delete_user)
 
         adapter = SettingsAdapter(settingsList, imageList, this)
         recyclerView.adapter = adapter

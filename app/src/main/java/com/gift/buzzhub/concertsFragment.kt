@@ -38,28 +38,29 @@ class concertsFragment : Fragment() {
 
         return view
     }
-fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>,imgList: ArrayList<Int>) {
-    nameList.add("Anthony Hamilton Live @SunArena")
-    nameList.add("Taylor Swift Eras Tour 2024")
-    nameList.add("Louis the Child LIve @Sun Square Garden")
-    nameList.add("Freshly Ground Live")
 
-    detailsList.add("Saturday,May 25 2024, SunArena, Time\nSquare Casino, R479 general. Booking")
-    detailsList.add("Sunday,September 22 2024, SunArena, Time\n Square Casino, R1660 general")
-    detailsList.add("Saturday,27 April 2024, R250 general\n access. Booking available")
-    detailsList.add("Saturday,4 May 2023, Vossloorus Gardens,\nTickets start at R250 General")
+        fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>,imgList: ArrayList<Int>) {
+            nameList.add("Anthony Hamilton Live @SunArena")
+            nameList.add("Taylor Swift Eras Tour 2024")
+            nameList.add("Louis the Child LIve @Sun Square Garden")
+            nameList.add("Freshly Ground Live")
 
-    priceList.add("R500")
-    priceList.add("R900")
-    priceList.add("R200")
-    priceList.add("R360")
+            detailsList.add("Saturday,May 25 2024, SunArena, Time\nSquare Casino, R479 general. Booking")
+            detailsList.add("Sunday,September 22 2024, SunArena, Time\n Square Casino, R1660 general")
+            detailsList.add("Saturday,27 April 2024, R250 general\n access. Booking available")
+            detailsList.add("Saturday,4 May 2023, Vossloorus Gardens,\nTickets start at R250 General")
 
-    imgList.add(R.drawable.colourfest)
-    imgList.add(R.drawable.dstvdeliciousimg)
-    imgList.add(R.drawable.justdanceimg)
-    imgList.add(R.drawable.rockingthedaisiesimg)
+            priceList.add("R500")
+            priceList.add("R900")
+            priceList.add("R200")
+            priceList.add("R360")
+
+            imgList.add(R.drawable.colourfest)
+            imgList.add(R.drawable.dstvdeliciousimg)
+            imgList.add(R.drawable.justdanceimg)
+            imgList.add(R.drawable.rockingthedaisiesimg)
 
 
-}
+        }
 
-}
+    }

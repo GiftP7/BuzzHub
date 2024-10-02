@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.BuzzHub" parent="Base.Theme.BuzzHub" />
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
 </resources>

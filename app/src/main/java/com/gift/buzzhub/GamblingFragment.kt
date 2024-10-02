@@ -32,15 +32,19 @@ class GamblingFragment : Fragment() {
         recyclerView = view.findViewById(R.id.gamblingRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        gambleSites.add("Visit hollywoodBets.co.za")
-        gambleSites.add("Visit betway.co.za")
-        gambleSites.add("Visit lottostars.co.za")
-        gambleSites.add("Visit supabet.co.za")
+        gambleSites = arrayListOf(
+            "https://m.hollywoodbets.net/",
+            "https://reg.betway.co.za/Sports?register=1&btag=P72188-PR24678-CM74973-TS1990856&gclid=CjwKCAjwoJa2BhBPEiwA0l0ImJWvRT9sxObDTWCMDqKcXSvffG8Hw9kSYJsptEhCnmCMAe3MCVU_RhoC59IQAvD_BwE",
+            "https://lottostar.co.za/",
+            "https://www.supabets.co.za/"
+        )
 
         gambleSitesNames.add("HollywoodBets")
         gambleSitesNames.add("Betway")
         gambleSitesNames.add("Lottostars")
         gambleSitesNames.add("Supabet")
+
+
 
         imagesGamble.add(R.drawable.hollywoodbets)
         imagesGamble.add(R.drawable.betway)

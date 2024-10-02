@@ -2,6 +2,7 @@ package com.gift.buzzhub
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 
@@ -63,44 +64,44 @@ class HostLogin : AppCompatActivity() {
         }
     }
 
-   fun retrieveDataFromDatabase() {
-        myReference.addValueEventListener(object : ValueEventListener {
+    fun retrieveDataFromDatabase() {val etEmail = editTextEmail.text.toString()
+        val etPassword = editTextPassword.text.toString()
+
+        myReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                hostList.clear()
+                var hostFound = false
                 for (eachHost in snapshot.children) {
                     val host = eachHost.getValue(Host::class.java)
-                    if (host != null) {
-                        hostList.add(host)
-                    }
-                }
-
-                val etEmail = editTextEmail.text.toString()
-                val etPassword = editTextPassword.text.toString()
-
-                for (host in hostList) {
-                    if (host.hostEmail == etEmail) {
+                    if (host != null && host.hostEmail == etEmail) {
+                        hostFound = true
                         if (host.hostPassword == etPassword) {
+                            // Login successful
                             val hostLoginIntent = Intent(this@HostLogin, HostDashboard::class.java)
                             hostLoginIntent.putExtra("hostId", host.hostId)
                             hostLoginIntent.putExtra("hostEvents", host.hostEvents)
                             hostLoginIntent.putExtra("hostName", host.hostName)
                             hostLoginIntent.putExtra("hostClicks", host.hostClicks)
+                            hostLoginIntent.putExtra("hostCategory", host.hostCategory)
                             startActivity(hostLoginIntent)
                             Toast.makeText(applicationContext, "Login Successful", Toast.LENGTH_SHORT).show()
                             editTextEmail.text.clear()
                             editTextPassword.text.clear()
-
                         } else {
                             Toast.makeText(applicationContext, "Incorrect Password. Try again", Toast.LENGTH_SHORT).show()
-
                         }
+                        break // Exit the loop once the host is found
                     }
                 }
-                Toast.makeText(applicationContext, "Incorrect Email. Try again", Toast.LENGTH_SHORT).show()
+
+                if (!hostFound) {
+                    Toast.makeText(applicationContext, "Incorrect Email. Try again", Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Handle database error
+                Log.e("HostLogin", "Database error: ${error.message}")
+                Toast.makeText(applicationContext, "Database error: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

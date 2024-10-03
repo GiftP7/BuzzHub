@@ -3,10 +3,13 @@ package com.gift.buzzhub
 import android.graphics.Color
 import android.os.Build
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.gift.buzzhub.databinding.ActivityMainBinding
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var signUpButtonHP: Button
     lateinit var loginButtonHP: Button
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             insets
 
         }
+
+
         signUpButtonHP = findViewById(R.id.signUpButtonHP)
         loginButtonHP = findViewById(R.id.loginButtonHP)
 
@@ -49,5 +56,7 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this@MainActivity, LoginPage::class.java)
             startActivity(intent)
         }
+
+
     }
 }

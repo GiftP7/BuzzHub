@@ -24,7 +24,7 @@ class GambleAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GambleViewHolder {
-        val view: View =LayoutInflater.from(parent.context)
+        val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.gambling_card_design, parent, false)
         return GambleViewHolder(view)
     }

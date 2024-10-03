@@ -99,8 +99,8 @@ class EditEventsActivity : AppCompatActivity() {
         txtEditEventName.setText(eventName)
         val eventDetails = intent.getStringExtra("eventDetails")
         txtEditEventDetails.setText(eventDetails)
-        val eventPrice = intent.getStringExtra("eventPrice")
-        textViewPrice.text = eventPrice
+        val eventPrice = intent.getDoubleExtra("eventPrice",0.0)
+        textViewPrice.text = eventPrice.toString()
         val eventCapacity = intent.getStringExtra("eventCapacity")
         textViewCapacity.text = eventCapacity
         eventId = intent.getStringExtra("eventId").toString()
@@ -117,7 +117,7 @@ class EditEventsActivity : AppCompatActivity() {
 
         editEventPricebtn.setOnClickListener{
             val currentPrice = selectedPrice
-            if(currentPrice.toString() != eventPrice){
+            if(currentPrice != eventPrice){
                 changeEventPrice(currentPrice.toString(),eventId)
             }
             else{

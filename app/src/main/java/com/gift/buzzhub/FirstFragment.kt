@@ -73,15 +73,7 @@ class FirstFragment : Fragment() {
             } catch (e: Exception) {
                 Log.e("FirstFragment", "Error starting AddEventsActivity", e)
             }
-            /*val dialogFragment = AddEventsFragment()
-            val bundle = Bundle()
-            bundle.putString("hostName", hName)
-            bundle.putString("hostId", hId)
-            bundle.putInt("hostClicks", hClicks)
-            bundle.putInt("hostEvents", hEvents)
-            bundle.putString("hostCategory", hCategory)
-            dialogFragment.arguments = bundle
-            dialogFragment.show(childFragmentManager, "my_dialog")*/
+
 
         }
 
@@ -94,17 +86,6 @@ class FirstFragment : Fragment() {
             deleteEventsIntent.putExtra("hostClicks", hClicks)
             deleteEventsIntent.putExtra("hostCategory", hCategory)
             startActivity(deleteEventsIntent)
-           /* val dialogFragment = DeleteEventsFragment()
-            val bundle = Bundle()
-            bundle.putString("hostName", hName)
-            bundle.putString("hostId", hId)
-            bundle.putInt("hostClicks", hClicks)
-            bundle.putInt("hostEvents", hEvents)
-            bundle.putString("hostCategory", hCategory)
-            dialogFragment.arguments = bundle
-            dialogFragment.show(childFragmentManager,"deleteEventsFragment")
-
-            childFragmentManager.popBackStack("deleteEventsFragment",FragmentManager.POP_BACK_STACK_INCLUSIVE)*/
         }
 
         return view

@@ -41,11 +41,11 @@ class EventsOverviewAdapter(var eventList:ArrayList<Events>,
         val eventId = eventList[position].eventId
 
         holder.cardView.setOnClickListener {
-                openEditEventPage(eventId,eventList[position].eventName,eventList[position].eventDetails,eventList[position].eventPrice.toString())
+                openEditEventPage(eventId,eventList[position].eventName,eventList[position].eventDetails,eventList[position].eventPrice)
         }
     }
 
-    fun openEditEventPage(eventId:String,eventName:String,eventDetails:String,eventPrice:String){
+    fun openEditEventPage(eventId:String,eventName:String,eventDetails:String,eventPrice:Double){
         val intent = Intent(context,EditEventsActivity::class.java)
         intent.putExtra("eventId", eventId)
         intent.putExtra("eventDetails", eventDetails)

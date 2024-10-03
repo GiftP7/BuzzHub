@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class UserEventOverviewAdapter(var eventList:ArrayList<Events>,
@@ -38,15 +39,21 @@ class UserEventOverviewAdapter(var eventList:ArrayList<Events>,
         holder.textViewPrice.text = "R${eventList[position].eventPrice.toString()}"
         holder.eventImg.setImageResource(imgList[position])
         val eventId = eventList[position].eventId
-        val siteUrl = "https://pay.ozow.com/f45a2df7-88cb-4a67-a741-1e8dfbd67beb/bank-selection/"
+
 
         holder.itemView.setOnClickListener{
-            openWebPage(context, siteUrl)
+
+            openPayment(eventList[position].eventName,eventList[position].eventDetails,eventList[position].eventPrice)
         }
     }
 
-    private fun openWebPage(context: Context, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+    fun openPayment(eventName:String, eventDetails:String, eventPrice:Double){
+        val intent = Intent(context,EventPayment::class.java)
+        intent.putExtra("eventName",eventName)
+        intent.putExtra("eventDetails",eventDetails)
+        intent.putExtra("eventPrice",eventPrice)
         context.startActivity(intent)
+
     }
 }

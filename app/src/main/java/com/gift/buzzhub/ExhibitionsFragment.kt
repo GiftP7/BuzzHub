@@ -7,15 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ExhibitionsFragment : Fragment(){
 
+
+    val eventDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    val eventMyReference: DatabaseReference = eventDatabase.reference.child("Events").child("Active Events")
+
     lateinit var recyclerView: RecyclerView
-    var event_name = ArrayList<String>()
-    var event_details = ArrayList<String>()
-    var event_price = ArrayList<String>()
-    var image_list = ArrayList<Int>()
+    var imgList = ArrayList<Int>()
     lateinit var adapter : exhibitionsAdapter
+    var eventList = ArrayList<Events>()
+    lateinit var Tadapter: UserEventOverviewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,45 +33,46 @@ class ExhibitionsFragment : Fragment(){
         val view = inflater.inflate(R.layout.activity_exhibitions, container, false)
 
         recyclerView = view.findViewById(R.id.exhibitionsRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-
-        event_name.add("Kunene Art Gallery")
-        event_name.add("Exhibitions")
-        event_name.add("Wits Exhibition")
-        event_name.add("East Rand Gallery opening")
-        event_name.add("XYZ Museum")
-        event_name.add("Wits Exhibition")
-
-
-        event_details.add("874 Katlehong Avenue, Johannesburg")
-        event_details.add("45 Groove Street, Kempton Park")
-        event_details.add("474 Brian Avenue, Pretoria")
-        event_details.add("45 Groove Street, Kempton Park")
-        event_details.add("874 Katlehong Avenue, Johannesburg")
-        event_details.add("841 Katlehong Avenue, Eden Park")
-
-        event_price.add("R650")
-        event_price.add("R900")
-        event_price.add("R210")
-        event_price.add("R650")
-        event_price.add("R580")
-        event_price.add("R210")
-
-        image_list.add(R.drawable.exhibit)
-        image_list.add(R.drawable.exhibit_i)
-        image_list.add(R.drawable.exhibit_ii)
-        image_list.add(R.drawable.exhibit_iii)
-        image_list.add(R.drawable.exhibit_v)
-        image_list.add(R.drawable.exhibit_i)
-
-        adapter = exhibitionsAdapter(event_name, event_details ,image_list, requireContext())
-
-        recyclerView.adapter = adapter
-
-
-
+        fillArray(imgList)
+        retrieveDataFromDatabase(imgList)
 
         return view
+    }
+
+    fun fillArray(imgList: ArrayList<Int>) {
+
+
+        imgList.add(R.drawable.colourfest)
+        imgList.add(R.drawable.dstvdeliciousimg)
+        imgList.add(R.drawable.justdanceimg)
+        imgList.add(R.drawable.rockingthedaisiesimg)
+
+
+    }
+
+    fun retrieveDataFromDatabase(imgList: ArrayList<Int>) {
+        eventMyReference.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                eventList.clear()
+                for(eachEvent in snapshot.children){
+                    val event = eachEvent.getValue(Events::class.java)
+                    if(event != null && event.eventCategory == "Exhibitions"){
+                        eventList.add(event)
+                    }
+                }
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                fillArray(imgList)
+                Tadapter = UserEventOverviewAdapter(eventList,imgList,requireContext())
+                recyclerView.adapter = Tadapter
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+
     }
 }

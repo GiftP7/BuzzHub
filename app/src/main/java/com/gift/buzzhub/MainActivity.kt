@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var signUpButtonHP: Button
     lateinit var loginButtonHP: Button
+    lateinit var eventHostHyperLink2: TextView
 
 
 
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         signUpButtonHP = findViewById(R.id.signUpButtonHP)
         loginButtonHP = findViewById(R.id.loginButtonHP)
+        eventHostHyperLink2 = findViewById(R.id.eventHostHyperLink2)
 
         signUpButtonHP.setOnClickListener {
             var intent = Intent(this@MainActivity, SignUpPage::class.java)
@@ -54,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         }
         loginButtonHP.setOnClickListener {
             var intent = Intent(this@MainActivity, LoginPage::class.java)
+            startActivity(intent)
+        }
+
+        eventHostHyperLink2.setOnClickListener{
+            var intent = Intent(this@MainActivity, HostLogin::class.java)
             startActivity(intent)
         }
 

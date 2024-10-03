@@ -7,15 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class concertsFragment : Fragment() {
+
+    val eventDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    val eventMyReference: DatabaseReference = eventDatabase.reference.child("Events").child("Active Events")
+
 
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: ConcertsPageAdapter
     var namesList = ArrayList<String>()
     var priceList = ArrayList<String>()
     var detailsList = ArrayList<String>()
+    var eventList = ArrayList<Events>()
+    lateinit var Tadapter: UserEventOverviewAdapter
     var imgList = ArrayList<Int>()
 
 
@@ -27,40 +38,48 @@ class concertsFragment : Fragment() {
         var view = inflater.inflate(R.layout.activity_concerts_page, container, false)
 
         recyclerView = view.findViewById(R.id.concertsRecycleView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        fillArray(namesList,detailsList,imgList)
-        adapter = ConcertsPageAdapter(namesList,detailsList,priceList,imgList,requireContext())
-        recyclerView.adapter = adapter
-
-
-
-
-
+        fillArray(imgList)
+        retrieveDataFromDatabase(imgList)
         return view
     }
 
-        fun fillArray(nameList:ArrayList<String>, detailsList: ArrayList<String>,imgList: ArrayList<Int>) {
-            nameList.add("Anthony Hamilton Live @SunArena")
-            nameList.add("Taylor Swift Eras Tour 2024")
-            nameList.add("Louis the Child LIve @Sun Square Garden")
-            nameList.add("Freshly Ground Live")
 
-            detailsList.add("Saturday,May 25 2024, SunArena, Time\nSquare Casino, R479 general. Booking")
-            detailsList.add("Sunday,September 22 2024, SunArena, Time\n Square Casino, R1660 general")
-            detailsList.add("Saturday,27 April 2024, R250 general\n access. Booking available")
-            detailsList.add("Saturday,4 May 2023, Vossloorus Gardens,\nTickets start at R250 General")
-
-            priceList.add("R500")
-            priceList.add("R900")
-            priceList.add("R200")
-            priceList.add("R360")
-
-            imgList.add(R.drawable.colourfest)
-            imgList.add(R.drawable.dstvdeliciousimg)
-            imgList.add(R.drawable.justdanceimg)
-            imgList.add(R.drawable.rockingthedaisiesimg)
+    fun fillArray(imgList: ArrayList<Int>) {
 
 
-        }
+        imgList.add(R.drawable.colourfest)
+        imgList.add(R.drawable.dstvdeliciousimg)
+        imgList.add(R.drawable.justdanceimg)
+        imgList.add(R.drawable.rockingthedaisiesimg)
+
 
     }
+
+    fun retrieveDataFromDatabase(imgList: ArrayList<Int>) {
+        eventMyReference.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                eventList.clear()
+                for(eachEvent in snapshot.children){
+                    val event = eachEvent.getValue(Events::class.java)
+                    if(event != null && event.eventCategory == "Concerts"){
+                        eventList.add(event)
+                    }
+                }
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                fillArray(imgList)
+                Tadapter = UserEventOverviewAdapter(eventList,imgList,requireContext())
+                recyclerView.adapter = Tadapter
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+
+    }
+
+}
+

@@ -101,7 +101,7 @@ class SignUpPage : AppCompatActivity() {
         }
 
         eventHostHyperLink.setOnClickListener{
-            val intent = Intent(this@SignUpPage,addHostActivity::class.java)
+            val intent = Intent(this@SignUpPage,HostLogin::class.java)
             startActivity(intent)
         }
 

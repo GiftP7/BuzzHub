@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:backgroundTint="#101010"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".addHostActivity">
 
 
@@ -60,6 +61,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hostFrame">
 
@@ -71,6 +74,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent">

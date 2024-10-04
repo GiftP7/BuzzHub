@@ -5,9 +5,11 @@
     android:id="@+id/hostLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HostLogin"
+    android:layout_gravity="center_horizontal"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal">
+    tools:context=".HostLogin">
 
     <TextView
         android:id="@+id/hostSignUpHyperLink"

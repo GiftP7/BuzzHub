@@ -32,9 +32,8 @@ class AccountAdapter(var context: Context, var accountList: ArrayList<String>): 
             val intent = when (position) {
                 0 -> Intent(context, UpdateNamePage::class.java)
                 1 -> Intent(context, UpdateEmailPage::class.java)
-                2 -> Intent(context, UpdateContactNumberPage::class.java)
-                3 -> Intent(context, ProfilePage::class.java)
-                4 -> Intent(context, TwoFactorAuthPage::class.java)
+                2 -> Intent(context, ProfilePage::class.java)
+                3 -> Intent(context, TwoFactorAuthPage::class.java)
                 else -> null
             }
             intent?.let { context.startActivity(it) }

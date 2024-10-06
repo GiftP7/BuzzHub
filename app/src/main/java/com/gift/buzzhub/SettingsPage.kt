@@ -32,20 +32,20 @@ class SettingsPage : AppCompatActivity() {
 
 
         settingsList.add("Account")
-        settingsList.add("Notification")
-        settingsList.add("Payment methods")
         settingsList.add("Display")
         settingsList.add("Help centre")
         settingsList.add("Privacy policy")
         settingsList.add("Delete account")
+        settingsList.add("Instagram")
+        settingsList.add("Facebook")
 
         imageList.add(R.drawable.account)
-        imageList.add(R.drawable.notification)
-        imageList.add(R.drawable.payment)
         imageList.add(R.drawable.display)
         imageList.add(R.drawable.help_centre)
         imageList.add(R.drawable.privacy)
         imageList.add(R.drawable.delete_user)
+        imageList.add(R.drawable.insta)
+        imageList.add(R.drawable.facebook)
 
         adapter = SettingsAdapter(settingsList, imageList, this)
         recyclerView.adapter = adapter

@@ -29,7 +29,6 @@ class AccountPage : AppCompatActivity() {
 
         accountList.add("Update name")
         accountList.add("Update email")
-        accountList.add("Update contact number")
         accountList.add("Update profile")
         accountList.add("Two factor authentication")
 

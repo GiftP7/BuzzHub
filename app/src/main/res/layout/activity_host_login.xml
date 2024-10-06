@@ -46,6 +46,7 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Welcome Back!"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +59,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Let's create the Buzz!"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +74,8 @@
         android:fontFamily="@font/poppins_bold"
         android:hint="Enter password"
         android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hostEditTextTextEmailAddress2" />
@@ -85,6 +89,8 @@
         android:fontFamily="@font/poppins_bold"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -110,6 +116,7 @@
         android:layout_marginBottom="44dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Don't have an account?"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

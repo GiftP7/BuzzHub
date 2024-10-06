@@ -53,7 +53,7 @@ class UpdateNamePage : AppCompatActivity() {
         val userId = auth.currentUser?.uid
 
         if (userId != null) {
-            val userRef = database.child("users").child(userId)
+            val userRef = database.child("Users").child(userId)
             userRef.child("name").get().addOnSuccessListener { dataSnapshot ->
                 val storedName = dataSnapshot.getValue(String::class.java)
 

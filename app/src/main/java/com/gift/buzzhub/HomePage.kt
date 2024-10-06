@@ -159,17 +159,15 @@ class HomePage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             when(a){
                 "Log Out" -> {val homeIntent = Intent(this@HomePage,LoginPage::class.java)
                               startActivity(homeIntent)
-                              Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
+                              Toast.makeText(applicationContext,"You have Logged Out",
                                   Toast.LENGTH_LONG).show()
                                 finish()}
                 "Profile" -> {val homeIntent = Intent(this@HomePage,ProfilePage::class.java)
                                startActivity(homeIntent)
-                               Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
-                                   Toast.LENGTH_LONG).show()}
+                               }
                 "Settings" -> {val homeIntent = Intent(this@HomePage,SettingsPage::class.java)
                                startActivity(homeIntent)
-                               Toast.makeText(applicationContext,"You have selected${parent.getItemAtPosition(position)}",
-                                   Toast.LENGTH_LONG).show()}
+                              }
                         //"Recommendations" -> Leads to Recommendations screen
             }
         }

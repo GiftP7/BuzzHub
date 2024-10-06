@@ -32,6 +32,8 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="16dp"
             android:text="Setting Option"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
